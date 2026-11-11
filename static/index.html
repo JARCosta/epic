@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Epic Notes</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; max-width: 640px; }
+      form { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+      input { flex: 1; padding: 0.5rem; }
+      button { padding: 0.5rem 1rem; }
+      li { margin-bottom: 0.5rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Epic Notes</h1>
+    <form id="item-form">
+      <input id="item-input" name="text" type="text" placeholder="Add a note" required />
+      <button type="submit">Save</button>
+    </form>
+    <ul id="items"></ul>
+    <script src="/app.js"></script>
+  </body>
+</html>
