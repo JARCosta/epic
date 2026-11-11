@@ -1,24 +1,50 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Epic Notes</title>
+    <title>Voz do Cliente</title>
     <style>
-      body { font-family: Arial, sans-serif; margin: 2rem; max-width: 640px; }
-      form { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
-      input { flex: 1; padding: 0.5rem; }
-      button { padding: 0.5rem 1rem; }
-      li { margin-bottom: 0.5rem; }
+      body { font-family: Arial, sans-serif; margin: 2rem; color: #172033; }
+      header { max-width: 1200px; margin: auto; }
+      .cards, .content { max-width: 1200px; margin: 1rem auto; }
+      .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+      .card { padding: 1rem; border: 1px solid #d8dee9; border-radius: 8px; background: #f8fafc; }
+      .card strong { display: block; font-size: 1.8rem; margin-top: .4rem; }
+      section { margin-top: 2rem; }
+      table { width: 100%; border-collapse: collapse; background: white; }
+      th, td { padding: .65rem; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+      th { background: #eef2ff; }
+      .muted { color: #667085; }
+      .warning { color: #9a3412; font-weight: 600; }
+      .filter { margin: .5rem 0 1rem; padding: .5rem; min-width: 260px; }
     </style>
   </head>
   <body>
-    <h1>Epic Notes</h1>
-    <form id="item-form">
-      <input id="item-input" name="text" type="text" placeholder="Add a note" required />
-      <button type="submit">Save</button>
-    </form>
-    <ul id="items"></ul>
+    <h1>Voz do Cliente</h1>
+    <p id="reference" class="muted"></p>
+    <div id="summary" class="cards"></div>
+    <main class="content">
+      <section>
+        <h2>Fila de trabalho dos projetos</h2>
+        <p class="muted">Estas são as tarefas calculadas a partir do estado das ações. O envio real ainda não está configurado.</p>
+        <select id="queue-filter" class="filter">
+          <option value="all">Todos os projetos</option>
+          <option value="in_progress">Em curso — acompanhar</option>
+          <option value="action_required">Concluídos — ação necessária</option>
+          <option value="waiting">Futuros — aguardar</option>
+        </select>
+        <table><thead><tr><th>Projeto</th><th>Estado</th><th>Área / cliente</th><th>Gestor</th><th>Última ação</th><th>Tarefa</th></tr></thead><tbody id="projects"></tbody></table>
+      </section>
+      <section>
+        <h2>Atualizações de respostas</h2>
+        <table><thead><tr><th>Resposta</th><th>NPS</th><th>Projeto associado</th><th>Responsável</th><th>Observação</th></tr></thead><tbody id="updates"></tbody></table>
+      </section>
+      <section>
+        <h2>Notificações e revisão humana</h2>
+        <table><thead><tr><th>Resposta</th><th>Tipo</th><th>Motivo</th><th>Estado</th></tr></thead><tbody id="notifications"></tbody></table>
+      </section>
+    </main>
     <script src="/app.js"></script>
   </body>
 </html>
